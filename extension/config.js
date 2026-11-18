@@ -1,6 +1,7 @@
-// Endereco da API do Phishing Shield.
-// Troque pelo endereco do seu servico no Render (sem barra no final).
-const PS_API_BASE = "https://phishing-shield-a3.onrender.com";
+// Endereco da API do Phishing Shield (sem barra no final).
 
-// Para testar com a API rodando no seu computador, use:
+// API publicada no Render:
+const PS_API_BASE = "https://phishing-shield.onrender.com";
+
+// Para testar com a API rodando no seu computador (rodar.cmd), use:
 // const PS_API_BASE = "http://localhost:9090";

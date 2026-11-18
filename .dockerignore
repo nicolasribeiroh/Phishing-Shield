@@ -1,0 +1,7 @@
+.git
+.vscode
+extension/
+database/
+backend/target/
+backend/credenciais.cmd
+*.log
