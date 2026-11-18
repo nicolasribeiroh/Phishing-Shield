@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Phishing Shield A3</title>
+  <style>
+    body {
+      width: 300px; margin: 0; padding: 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0a1122; color: #fff;
+    }
+    h1 { font-size: 16px; margin: 0 0 4px 0; }
+    .tag { font-size: 10px; color: #00e5ff; letter-spacing: 1px; font-weight: bold; }
+    .card {
+      background: #111c36; border: 1px solid #233c6e;
+      border-radius: 8px; padding: 12px; margin-top: 12px;
+    }
+    .label { font-size: 11px; color: #8c9bb9; }
+    .valor { font-size: 14px; font-weight: bold; margin-top: 2px; }
+    .endereco { font-size: 11px; color: #c9d4e8; word-break: break-all; margin-top: 2px; }
+    #status-api.on  { color: #2ecc71; }
+    #status-api.off { color: #e74c3c; }
+    button {
+      width: 100%; margin-top: 12px; padding: 10px;
+      background: #00e5ff; color: #0a1122; border: none;
+      border-radius: 6px; font-weight: bold; cursor: pointer;
+    }
+    ul { padding-left: 18px; font-size: 12px; color: #c9d4e8; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="tag">PROJETO A3</div>
+  <h1>Phishing Shield</h1>
+
+  <div class="card">
+    <div class="label">Servidor de analise</div>
+    <div class="valor" id="status-api">verificando...</div>
+    <div class="label" style="margin-top:8px">Endereço</div>
+    <div class="endereco" id="endereco-api"></div>
+  </div>
+
+  <div class="card">
+    <div class="label">Como usar</div>
+    <ul>
+      <li>Abra o Gmail</li>
+      <li>Clique em qualquer e-mail</li>
+      <li>O alerta aparece no topo da mensagem</li>
+      <li>Após um período sem uso, a primeira análise pode levar até 1 minuto</li>
+    </ul>
+  </div>
+
+  <button id="btn-testar">Testar conexao</button>
+
+  <script src="config.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

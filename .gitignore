@@ -1,0 +1,7 @@
+# Compilacao
+backend/target/
+
+# Credenciais locais (nunca enviar ao GitHub)
+backend/credenciais.cmd
+
+*.log
