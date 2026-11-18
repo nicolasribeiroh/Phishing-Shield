@@ -20,7 +20,8 @@ phishing-shield-a3/
 │   └── icons/
 ├── backend/                    # API Java (Spring Boot)
 │   ├── Dockerfile              # usado pelo Render
-│   ├── rodar.cmd               # executa localmente (Windows)
+│   ├── rodar.cmd               # executa localmente com banco H2 (Windows)
+│   ├── rodar-neon.cmd          # executa localmente com o banco do Neon
 │   ├── credenciais.exemplo.cmd # modelo das credenciais locais
 │   └── src/main/
 │       ├── java/br/com/a3/phishingshield/
@@ -30,8 +31,10 @@ phishing-shield-a3/
 │       │   └── repository/  IndicadorRepository, PalavraChaveRepository
 │       └── resources/
 │           ├── application.properties
-│           ├── schema.sql      # tabelas do dicionario
-│           └── data.sql        # carga das palavras-chave
+│           ├── application-local.properties  # perfil local (H2)
+│           ├── schema.sql      # tabelas do dicionario (PostgreSQL)
+│           ├── data.sql        # carga das palavras-chave (PostgreSQL)
+│           └── h2/             # mesmas tabelas e dados para o H2
 └── database/
     ├── phishing_shield_banco.sql   # script completo (opcional)
     └── consultas_dicionario.sql    # consultas e exemplos de manutencao
@@ -71,9 +74,18 @@ e depois chame `POST /api/dicionario/recarregar`.
 
 ## Executar localmente (Windows)
 
-1. Copie `backend/credenciais.exemplo.cmd` para `backend/credenciais.cmd` e preencha com os dados do Neon.
-2. Execute `backend/rodar.cmd`.
-3. Em `extension/config.js`, use `http://localhost:9090` para testar com a API local.
+| Script | Banco usado | Quando usar |
+|---|---|---|
+| `backend/rodar.cmd` | H2 em memoria (perfil `local`) | Desenvolvimento e testes; funciona em qualquer rede |
+| `backend/rodar-neon.cmd` | PostgreSQL do Neon | Fora da rede corporativa; exige `backend/credenciais.cmd` |
+
+1. Execute `backend/rodar.cmd`.
+2. Em `extension/config.js`, use `http://localhost:9090` e recarregue a extensao.
+3. Console do banco local: `http://localhost:9090/h2-console`
+   (JDBC URL `jdbc:h2:mem:phishing_shield`, usuario `sa`, senha vazia).
+
+No modo local o dicionario e recriado a cada inicializacao; alteracoes permanentes
+devem ser feitas no Neon.
 
 ## Publicar
 
